@@ -9,7 +9,7 @@ const notes = require('./notes.js');
 // process.argv is automatically populated with all command line arguements
 
 const argv = yargs.argv; // command line arguments after being processed by yargs
-var command = process.argv[2]; // standard command line arguments
+var command = argv._[0]; // standard command line arguments
 console.log(`Command: ${command}`);
 console.log(`Yargs ARGV: `, argv);
 
