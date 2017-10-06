@@ -2,6 +2,13 @@ console.log('Starting notes.js');
 
 const fs = require('fs');
 
+// logs a note to the console
+var logNote = (note) => {
+  console.log('---');
+  console.log(`Title: ${note.title}`);
+  console.log(`Body: ${note.body}`);
+};
+
 // Grabs the existing notes from notes-data.json, or grabs []
 var fetchNotes = () => {
   // pulls existing notes if there are any
@@ -48,7 +55,12 @@ var getAll = () => {
 
 // gets the note for people to read it
 var getNote = (title) => {
-  console.log(`Gets note ${title} for you to read`);
+  // fetch notes
+  let notes = fetchNotes();
+  // filter for the one note we want by title
+  let targetNote = notes.filter((note) => note.title === title);
+  // return that note
+  return targetNote[0];
 }
 
 // removes note
@@ -67,7 +79,8 @@ module.exports = {
   addNote,
   getAll,
   getNote,
-  removeNote
+  removeNote,
+  logNote
 }
 
 
