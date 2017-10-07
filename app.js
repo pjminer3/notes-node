@@ -4,9 +4,34 @@ const yargs = require('yargs');
 
 const notes = require('./notes.js');
 
+const titleDesc = {
+  describe: 'Title of note',
+  demand: true,
+  alias: 't'
+};
+const bodyDesc = {
+  describe: 'Body of note',
+  demand: true,
+  alias: 'b'
+};
+
 // process.argv is automatically populated with all command line arguements
 
-const argv = yargs.argv; // command line arguments after being processed by yargs
+const argv = yargs
+  .command('add', 'Add new note', {
+    title: titleDesc,
+    body: bodyDesc
+  })
+  .command('list','List all notes')
+  .command('read','Read specified note', {
+    title: titleDesc
+  })
+  .command('remove', 'Removed specified note', {
+    title: titleDesc
+  })
+  .help()
+  .argv; // command line arguments after being processed by yargs
+
 var command = argv._[0]; // standard command line arguments
 
 if ( command === 'add') {
