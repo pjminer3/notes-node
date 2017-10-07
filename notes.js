@@ -1,9 +1,8 @@
-console.log('Starting notes.js');
-
 const fs = require('fs');
 
 // logs a note to the console
 var logNote = (note) => {
+  debugger;
   console.log('---');
   console.log(`Title: ${note.title}`);
   console.log(`Body: ${note.body}`);
@@ -50,7 +49,7 @@ var addNote = (title, body) => {
 
 // gets all notes and lists them
 var getAll = () => {
-  console.log('Getting all notes.');
+  return fetchNotes();
 }
 
 // gets the note for people to read it
